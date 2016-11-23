@@ -18,7 +18,7 @@
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
-        <td><%= localize invoice.date, :format => '%d de %B, %Y' %></td>
+        <td><%= localize invoice.date, :format => '%d/%m/%Y' %></td>
         <td><%= invoice.operator.name %></td>
         <td><%= invoice.full_number %></td>
         <td><%= invoice.taxed_21 %></td>
