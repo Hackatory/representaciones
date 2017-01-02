@@ -56,7 +56,7 @@ class InvoicesController < ApplicationController
   def destroy
     @invoice.destroy
     respond_to do |format|
-      format.html { redirect_to invoices_url, notice: 'Factura eliminada' }
+      format.html { redirect_to [@namespace, :invoices], notice: 'Factura eliminada' }
       format.json { head :no_content }
     end
   end

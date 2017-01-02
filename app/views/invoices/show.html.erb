@@ -1,41 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Fecha:</strong>
-  <%= @invoice.date.strftime('%d/%m/%Y')%>
-</p>
+<dl class='dl-horizontal'>
+  <dt>Factura:</dt>
+  <dd><%= @invoice.full_number %></dd>
+  <dt>Fecha:</dt>
+  <dd><%= @invoice.date.strftime('%d/%m/%Y')%></dd>
+  <dt>Operador:</dt>
+  <dd><%= @invoice.operator %></dd>
+  <dt>CUIT:</dt>
+  <dd><%= @invoice.operator.cuit %></dd>
+  <dt>Gravado IVA 21%</dt>
+  <dd><%= @invoice.taxed_21 %></dd>
+  <dt>IVA 21%</dt>
+  <dd><%= @invoice.tax_21 %></dd>
+  <dt>Gravado IVA 10,5:</dt>
+  <dd><%= @invoice.tax_105 %></dd>
+  <dt>IVA 10,5:</dt>
+  <dd><%= @invoice.taxed_105 %></dd>
+  <dt>No Gravado:</dt>
+  <dd><%= @invoice.not_taxed %></dd>
+  <dt>Exento:</dt>
+  <dd><%= @invoice.exempt %></dd>
+  <dt>Percepcion AFIP:</dt>
+  <dd><%= @invoice.perception %></dd>
+  <dt>Total:</dt>
+  <dd><%= @invoice.total %></dd>
+</dl>
 
-<p>
-  <strong>Operador:</strong>
-  <%= @invoice.operator %>
-</p>
-
-<p>
-  <strong>Factura:</strong>
-  <%= @invoice.invoice_type %>
-  <%= @invoice.sales_point %>
-  <%= @invoice.number %>
-</p>
-
-<p>
-  <strong>Gravado IVA 21%</strong>
-  <%= @invoice.taxed_21 %>
-</p>
-
-<p>
-  <strong>Gravado IVA 10,5:</strong>
-  <%= @invoice.taxed_105 %>
-</p>
-
-<p>
-  <strong>No Gravado:</strong>
-  <%= @invoice.not_taxed %>
-</p>
-
-<p>
-  <strong>Exento:</strong>
-  <%= @invoice.exempt %>
-</p>
-
-<%= link_to 'Editar', [:edit, @invoice.operator_namespace, @invoice] %> |
-<%= link_to 'Volver', [@invoice.operator_namespace, :invoices] %>
+<%= link_to 'Editar', [:edit, @invoice.operator_namespace, @invoice], class: 'btn btn-default' %>
+<%= link_to 'Borrar', [@invoice.operator_namespace, @invoice], method: :delete,
+  data: { confirm: 'Desea eliminar la factura?' }, class: 'btn btn-danger' %>
