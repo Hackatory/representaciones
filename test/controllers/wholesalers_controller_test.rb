@@ -21,10 +21,12 @@ class WholesalersControllerTest < ActionController::TestCase
   test "should create operator" do
     assert_difference('Wholesaler.count') do
       post :create, wholesaler:
-        { name: @operator.name, tax_category: @operator.tax_category }
+        { name: @operator.name,
+          tax_category: @operator.tax_category,
+          cuit: @operator.cuit }
     end
 
-    assert_redirected_to wholesaler_path(assigns(:operator))
+    assert_redirected_to wholesalers_path
   end
 
   test "should show operator" do
@@ -39,7 +41,7 @@ class WholesalersControllerTest < ActionController::TestCase
 
   test "should update operator" do
     patch :update, id: @operator, wholesaler: { name: @operator.name }
-    assert_redirected_to wholesaler_path(assigns(:operator))
+    assert_redirected_to wholesalers_path
   end
 
   test "should destroy operator" do
